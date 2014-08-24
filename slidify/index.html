@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Very Simple Interactive Plot</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Very Simple Interactive Plot">
+  <meta name="author" content="Zhong Wang">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Very Simple Interactive Plot</h1>
+    <h2>1967 - 2007 US Population</h2>
+    <p>Zhong Wang<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Appllication Summary</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The economic dataset is included in the ggplot2 package. It contains US economics data during Jun 1967 to Mar 2007, such as data regarding personal savings rate, personal consumption expenditure, median duration of unemployment, unemployed population and total population.[1]</p>
+
+<p>Through this very simple interactive application, user can</p>
+
+<ul>
+<li>Choose a specific time period for plotting</li>
+<li>Pick which population date to be shown</li>
+</ul>
+
+<ol>
+<li><a href="http://docs.ggplot2.org/current/economics.html">R document - US economic time series.</a></li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Data Summary</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The total population and unemployed population data are summarised as follows</p>
+
+<pre><code class="r">library(ggplot2)
+data(economics)
+</code></pre>
+
+<p>Summary of Total Population (in millions)</p>
+
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##     199     220     243     246     272     302
+</code></pre>
+
+<p>Summary of Unemployed Population (in millions)</p>
+
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    2.68    6.05    7.19    7.00    8.25   12.10
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Population Plot</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The red line in the plot is total population, and the blue line is unemployed population</p>
+
+<div style='float:left;width:48%;' class='centered'>
+  <p><a href="http://zhong-wang.shinyapps.io/shinyapp/">Application Site</a></p>
+
+<pre><code>qplot(date, pop, data=economics, 
+geom=&quot;blank&quot;) + xlab(&quot;Years&quot;) +
+ylab(&quot;Population (in millions)&quot;) +
+ylim(0, max(economics$pop)) +
+geom_line(aes(y=pop), colour=&quot;red&quot;) +
+geom_line(aes(y=unemploy), colour=&quot;blue&quot;)
+</code></pre>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p><img src="assets/fig/unnamed-chunk-4.png" alt="plot of chunk unnamed-chunk-4"> </p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Observation</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Total population in the US steadily increases during 1967 to 2007</li>
+<li>Unemployed population in the US remains at the same level over the time</li>
+<li><p>It doesn&#39;t seem a strong positive correlation between total population and unemployed population</p>
+
+<ul>
+<li>The correlation between two populations is 0.4123</li>
+</ul></li>
+<li><p>The unemployment ratio (unemployed population / total population) gradually declines</p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Appllication Summary'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Data Summary'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Population Plot'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Observation'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
